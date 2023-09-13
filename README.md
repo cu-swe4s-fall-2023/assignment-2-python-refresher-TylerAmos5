@@ -4,4 +4,5 @@
 Completed get_columns function to return specified values that correspond to queried column and value.
 Updated print_fires.py to use get_column correctly from my_utils.
 Ensured my_utils.py only runs if main and that all python code satisfies pycodestyle. 
+Changed results_column param in get_column to be a named parameter that defaults to 1. 
 Created run.sh to execute print_fires.py.

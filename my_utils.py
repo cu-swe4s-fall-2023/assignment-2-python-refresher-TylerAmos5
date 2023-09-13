@@ -28,3 +28,7 @@ def get_column(file_name, query_column, query_value, result_column):
             if A[query_column] == query_value:
                 result_values.append(A[result_column])
     return result_values
+
+
+if __name__ == '__main__':
+    main()

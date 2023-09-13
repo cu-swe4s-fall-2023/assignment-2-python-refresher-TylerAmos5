@@ -1,5 +1,5 @@
 
-def get_column(file_name, query_column, query_value, result_column):
+def get_column(file_name, query_column, query_value, result_column = 1):
     """Return the values of interest from a csv that correspond to the queried
     columns and values.
 

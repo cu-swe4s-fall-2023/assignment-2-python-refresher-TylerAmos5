@@ -26,7 +26,7 @@ def get_column(file_name, query_column, query_value, result_column = 1):
         for line in f:
             A = line.rstrip().split(',')
             if A[query_column] == query_value:
-                result_values.append(A[result_column])
+                result_values.append(int(float((A[result_column]))))
     return result_values
 
 

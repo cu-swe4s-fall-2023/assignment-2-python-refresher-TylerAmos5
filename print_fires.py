@@ -41,7 +41,10 @@ def main():
     result = get_column(args.file_name, args.query_column,
                         args.query_value,
                         result_column=args.result_column)
-    print(result)
+    if result is None:
+        pass
+    else:
+        print(result)
 
 
 if __name__ == '__main__':

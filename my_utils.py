@@ -25,20 +25,20 @@ def get_column(file_name, query_column, query_value, result_column=1):
     result_values = []
     try:
         with open(file_name, 'r') as f:
-
             next(f)  # skip header
             for line in f:
                 A = line.rstrip().split(',')
                 try:
                     if A[query_column] == query_value:
                         result_values.append(int(float((A[result_column]))))
-                        return result_values
                 except ValueError:
                     print("Error type-casting to integer")
+                    return None
+            return result_values
     except FileNotFoundError:
-        sys.exit("File not found")
+        print("File not found")
     except Exception as e:
-        sys.exit("An error occured")
+        print("An error occured")
 
 
 if __name__ == '__main__':

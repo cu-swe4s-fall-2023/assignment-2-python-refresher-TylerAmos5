@@ -6,3 +6,8 @@ Updated print_fires.py to use get_column correctly from my_utils.
 Ensured my_utils.py only runs if main and that all python code satisfies pycodestyle. 
 Changed results_column param in get_column to be a named parameter that defaults to 1. 
 Created run.sh to execute print_fires.py.
+-----------------
+HW3:
+Added try except blocks to get_columns function to handle file and type casting errors
+print_fires now takes named command line arguments using argparse.
+Test cases were added to run.sh.

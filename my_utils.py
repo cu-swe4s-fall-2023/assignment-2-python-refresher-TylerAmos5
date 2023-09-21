@@ -39,7 +39,3 @@ def get_column(file_name, query_column, query_value, result_column=1):
         print("File not found")
     except Exception as e:
         print("An error occured")
-
-
-if __name__ == '__main__':
-    main()

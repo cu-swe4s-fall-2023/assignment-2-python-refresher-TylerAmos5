@@ -55,7 +55,7 @@ def mean(data):
     if (!(all(isinstance(i, int) for i in data))):
         raise ValueError("Data are not all integers")
 
-    return int(float(sum(data)/len(data)))
+    return sum(data)/len(data)
 
 
 def median(data):

@@ -43,7 +43,7 @@ def get_column(file_name, query_column, query_value, result_column=1):
 
 def mean(data):
     """Return the mean of a list of integers
-    
+
     Parameters
     ----------
     data : list of integers
@@ -52,15 +52,15 @@ def mean(data):
     ----------
     mean of dataset
     """
-    if !(all(isinstance(i, int) for i in data)):
-        raise ValueError("data are not all integers")
+    if (!(all(isinstance(i, int) for i in data))):
+        raise ValueError("Data are not all integers")
 
     return int(float(sum(data)/len(data)))
 
 
 def median(data):
     """Returns the median of a list of integers
-    
+
     Parameters
     ----------
     data : list of integers
@@ -69,13 +69,13 @@ def median(data):
     ----------
     median of the dataset
     """
-    if !(all(isinstance(i, int) for i in data)):
-        raise ValueError("data are not all integers")
+    if (!(all(isinstance(i, int) for i in data))):
+        raise ValueError("Data are not all integers")
 
     data.sort()
     num_elem = len(data)
     if num_elem % 2 == 0:
-        # floor division prevents float indexes and will access the middle elements
+        # floor division prevents float indexes to access the middle elements
         return (data[num_elem // 2 - 1] + data[num_elem // 2]) / 2
     else:
         return data[n // 2]
@@ -92,8 +92,8 @@ def stdv(data):
     ----------
     standard deviation of the dataset
     """
-    if !(all(isinstance(i, int) for i in data)):
-        raise ValueError("data are not all integers")
+    if (!(all(isinstance(i, int) for i in data))):
+        raise ValueError("Data are not all integers")
 
     num_elem = len(data)
     avg = mean(data)

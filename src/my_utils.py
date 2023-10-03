@@ -39,3 +39,65 @@ def get_column(file_name, query_column, query_value, result_column=1):
         print("File not found")
     except Exception as e:
         print("An error occured")
+
+
+def mean(data):
+    """Return the mean of a list of integers
+    
+    Parameters
+    ----------
+    data : list of integers
+
+    Returns
+    ----------
+    mean of dataset
+    """
+    if !(all(isinstance(i, int) for i in data)):
+        raise ValueError("data are not all integers")
+
+    return int(float(sum(data)/len(data)))
+
+
+def median(data):
+    """Returns the median of a list of integers
+    
+    Parameters
+    ----------
+    data : list of integers
+
+    Returns
+    ----------
+    median of the dataset
+    """
+    if !(all(isinstance(i, int) for i in data)):
+        raise ValueError("data are not all integers")
+
+    data.sort()
+    num_elem = len(data)
+    if num_elem % 2 == 0:
+        # floor division prevents float indexes and will access the middle elements
+        return (data[num_elem // 2 - 1] + data[num_elem // 2]) / 2
+    else:
+        return data[n // 2]
+
+
+def stdv(data):
+    """Returns the standard deviation of a list of integers
+
+    Parameters
+    ----------
+    data : A list of integers
+
+    Returns
+    ----------
+    standard deviation of the dataset
+    """
+    if !(all(isinstance(i, int) for i in data)):
+        raise ValueError("data are not all integers")
+
+    num_elem = len(data)
+    avg = mean(data)
+    # sum of squared differences from the mean using in-line for loop
+    squared_d = sum((x - avg) ** 2 for x in data)
+    variance = squared_d / (num_elem - 1)
+    return variance ** 0.5

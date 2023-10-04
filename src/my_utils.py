@@ -52,8 +52,11 @@ def mean(data):
     ----------
     mean of dataset
     """
-    if (!(all(isinstance(i, int) for i in data))):
+    if not(all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
+
+    if len(data) == 0:
+        raise ValueError("Expected a non-empty list")
 
     return sum(data)/len(data)
 
@@ -69,8 +72,11 @@ def median(data):
     ----------
     median of the dataset
     """
-    if (!(all(isinstance(i, int) for i in data))):
+    if not(all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
+
+    if len(data) == 0:
+        raise ValueError("Expected a non-empty list")
 
     data.sort()
     num_elem = len(data)
@@ -78,7 +84,7 @@ def median(data):
         # floor division prevents float indexes to access the middle elements
         return (data[num_elem // 2 - 1] + data[num_elem // 2]) / 2
     else:
-        return data[n // 2]
+        return data[num_elem // 2]
 
 
 def stdv(data):
@@ -92,8 +98,11 @@ def stdv(data):
     ----------
     standard deviation of the dataset
     """
-    if (!(all(isinstance(i, int) for i in data))):
+    if not(all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
+
+    if len(data) == 0:
+        raise ValueError("Expected a non-empty list")
 
     num_elem = len(data)
     avg = mean(data)

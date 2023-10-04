@@ -1,4 +1,4 @@
-from my_utils import get_column
+import my_utils
 import argparse
 
 
@@ -31,6 +31,11 @@ def get_args():
                         type=int,
                         help='Index of column containing deisred result',
                         required=True)
+    
+    parser.add_argument('--operation',
+                        type=str,
+                        help='Choose to perform the mean, median, ' 
+                        'or standard deviation (stdv) on the result column')
     args = parser.parse_args()
     return args
 
@@ -38,13 +43,24 @@ def get_args():
 def main():
     args = get_args()
     result = []
-    result = get_column(args.file_name, args.query_column,
+    result = my_utils.get_column(args.file_name, args.query_column,
                         args.query_value,
                         result_column=args.result_column)
+        
     if result is None:
         pass
     else:
-        print(result)
+        if args.operation == 'mean':
+            calc = my_utils.mean(result)
+            print(calc)
+        elif args.operation == 'median':
+            calc = my_utils.median(result)
+            print(calc)
+        elif args.operation == 'stdv':
+            calc = my_utils.stdv(result)
+            print(calc)
+        else:
+            print(result)
 
 
 if __name__ == '__main__':

@@ -33,9 +33,90 @@ def get_column(file_name, query_column, query_value, result_column=1):
                         result_values.append(int(float((A[result_column]))))
                 except ValueError:
                     print("Error type-casting to integer")
-                    return None
+                    sys.exit(1)
+                except IndexError:
+                    print("Column index is out of range")
+                    sys.exit(1)
             return result_values
     except FileNotFoundError:
         print("File not found")
+        sys.exit(1)
     except Exception as e:
         print("An error occured")
+        sys.exit(1)
+
+
+def mean(data):
+    """Return the mean of a list of integers
+
+    Parameters
+    ----------
+    data : list of integers
+
+    Returns
+    ----------
+    mean of dataset
+    """
+    if not (all(isinstance(i, int) for i in data)):
+        raise ValueError("Data are not all integers")
+        sys.exit(1)
+
+    if len(data) == 0:
+        raise ValueError("Expected a non-empty list")
+        sys.exit(1)
+    return sum(data)/len(data)
+
+
+def median(data):
+    """Returns the median of a list of integers
+
+    Parameters
+    ----------
+    data : list of integers
+
+    Returns
+    ----------
+    median of the dataset
+    """
+    if not (all(isinstance(i, int) for i in data)):
+        raise ValueError("Data are not all integers")
+        sys.exit(1)
+
+    if len(data) == 0:
+        raise ValueError("Expected a non-empty list")
+        sys.exit(1)
+
+    data.sort()
+    num_elem = len(data)
+    if num_elem % 2 == 0:
+        # floor division prevents float indexes to access the middle elements
+        return (data[num_elem // 2 - 1] + data[num_elem // 2]) / 2
+    else:
+        return data[num_elem // 2]
+
+
+def stdv(data):
+    """Returns the standard deviation of a list of integers
+
+    Parameters
+    ----------
+    data : A list of integers
+
+    Returns
+    ----------
+    standard deviation of the dataset
+    """
+    if not (all(isinstance(i, int) for i in data)):
+        raise ValueError("Data are not all integers")
+        sys.exit(1)
+
+    if len(data) == 0:
+        raise ValueError("Expected a non-empty list")
+        sys.exit(1)
+
+    num_elem = len(data)
+    avg = mean(data)
+    # sum of squared differences from the mean using in-line for loop
+    squared_d = sum((x - avg) ** 2 for x in data)
+    variance = squared_d / (num_elem - 1)
+    return variance ** 0.5

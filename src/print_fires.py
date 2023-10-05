@@ -35,7 +35,8 @@ def get_args():
     parser.add_argument('--operation',
                         type=str,
                         help='Choose to perform the mean, median, ' 
-                        'or standard deviation (stdv) on the result column')
+                        'or standard deviation (stdv) on the result column',
+                        required=False)
     args = parser.parse_args()
     return args
 
@@ -46,21 +47,23 @@ def main():
     result = my_utils.get_column(args.file_name, args.query_column,
                         args.query_value,
                         result_column=args.result_column)
-        
-    if result is None:
-        pass
+    
+    if args.operation == 'mean':
+        calc = my_utils.mean(result)
+        print(calc)
+    elif args.operation == 'median':
+        calc = my_utils.median(result)
+        print(calc)
+    elif args.operation == 'stdv':
+        calc = my_utils.stdv(result)
+        print(calc)
+    elif not args.operation:
+        print(result)
+        return
     else:
-        if args.operation == 'mean':
-            calc = my_utils.mean(result)
-            print(calc)
-        elif args.operation == 'median':
-            calc = my_utils.median(result)
-            print(calc)
-        elif args.operation == 'stdv':
-            calc = my_utils.stdv(result)
-            print(calc)
-        else:
-            print(result)
+        raise ValueError("This operation is not supported.\n"
+                         "Pick from: mean, median, stdv")
+        sys.exit(1)
 
 
 if __name__ == '__main__':

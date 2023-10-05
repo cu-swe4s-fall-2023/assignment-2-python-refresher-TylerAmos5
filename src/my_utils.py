@@ -33,12 +33,17 @@ def get_column(file_name, query_column, query_value, result_column=1):
                         result_values.append(int(float((A[result_column]))))
                 except ValueError:
                     print("Error type-casting to integer")
-                    return None
+                    sys.exit(1)
+                except IndexError:
+                    print("Column index is out of range")
+                    sys.exit(1)
             return result_values
     except FileNotFoundError:
         print("File not found")
+        sys.exit(1)
     except Exception as e:
         print("An error occured")
+        sys.exit(1)
 
 
 def mean(data):
@@ -54,10 +59,11 @@ def mean(data):
     """
     if not(all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
+        sys.exit(1)
 
     if len(data) == 0:
         raise ValueError("Expected a non-empty list")
-
+        sys.exit(1)
     return sum(data)/len(data)
 
 
@@ -74,9 +80,11 @@ def median(data):
     """
     if not(all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
+        sys.exit(1)
 
     if len(data) == 0:
         raise ValueError("Expected a non-empty list")
+        sys.exit(1)
 
     data.sort()
     num_elem = len(data)
@@ -100,9 +108,11 @@ def stdv(data):
     """
     if not(all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
+        sys.exit(1)
 
     if len(data) == 0:
         raise ValueError("Expected a non-empty list")
+        sys.exit(1)
 
     num_elem = len(data)
     avg = mean(data)

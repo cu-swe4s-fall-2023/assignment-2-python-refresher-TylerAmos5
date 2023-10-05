@@ -57,7 +57,7 @@ def mean(data):
     ----------
     mean of dataset
     """
-    if not(all(isinstance(i, int) for i in data)):
+    if not (all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
         sys.exit(1)
 
@@ -78,7 +78,7 @@ def median(data):
     ----------
     median of the dataset
     """
-    if not(all(isinstance(i, int) for i in data)):
+    if not (all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
         sys.exit(1)
 
@@ -106,7 +106,7 @@ def stdv(data):
     ----------
     standard deviation of the dataset
     """
-    if not(all(isinstance(i, int) for i in data)):
+    if not (all(isinstance(i, int) for i in data)):
         raise ValueError("Data are not all integers")
         sys.exit(1)
 

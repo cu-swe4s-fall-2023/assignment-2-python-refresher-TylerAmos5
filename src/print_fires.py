@@ -31,10 +31,10 @@ def get_args():
                         type=int,
                         help='Index of column containing deisred result',
                         required=True)
-    
+
     parser.add_argument('--operation',
                         type=str,
-                        help='Choose to perform the mean, median, ' 
+                        help='Choose to perform the mean, median, '
                         'or standard deviation (stdv) on the result column',
                         required=False)
     args = parser.parse_args()
@@ -45,9 +45,9 @@ def main():
     args = get_args()
     result = []
     result = my_utils.get_column(args.file_name, args.query_column,
-                        args.query_value,
-                        result_column=args.result_column)
-    
+                                 args.query_value,
+                                 result_column=args.result_column)
+
     if args.operation == 'mean':
         calc = my_utils.mean(result)
         print(calc)

@@ -11,17 +11,20 @@ cd <path>/assignment-2-python-refresher-TylerAmos5/src
 ```
 ## How to run print_fires.py
 Modify run.sh to set the parameters to query the csv appropriate for your interest
+The --operation parameter is optional. Specify the statistic you would like to calculate.
+If no --operation parameter is given, a list of integers will be returned.
 ```
 python3 print_fires.py --file_name=<file_name>.csv \
                        --query_column=<column_index> \
                        --query_value="Specific value to match in query column" \
                        --result_column=<column_index>
+                       --operation=[mean,median,stdv]
 ```
 ## Example
 ```
 python3 print_fires.py --file_name=Agrofood_co2_emission.csv \
                        --query_column=0 --query_value="United States of America" \
-                       --result_column=3
+                       --result_column=3 --operation=stdv
 ```
 ## my_utils.py
 **Contains the function get_column, which can returns corresponding values from a queried column and value of interest.**
@@ -48,3 +51,9 @@ Created run.sh to execute print_fires.py.
 Added try except blocks to get_columns function to handle file and type casting errors
 print_fires now takes named command line arguments using argparse.
 Test cases were added to run.sh.
+
+### HW4 (10/4):
+Added statistical calculations to my_utils.
+Mean, median, and standard deviation can be calculated for the result column
+Added unit and functional tests
+print_fires now takes an optional operation parameter that can calculate statistics about the result column. 

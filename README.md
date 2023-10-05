@@ -26,6 +26,16 @@ python3 print_fires.py --file_name=Agrofood_co2_emission.csv \
                        --query_column=0 --query_value="United States of America" \
                        --result_column=3 --operation=stdv
 ```
+## Testing Instructions
+Run the functional tests from the /test/func folder with:
+```
+bash test_print_fires.sh
+```
+Run the unit tests from /test/unit_test folder with:
+```
+python -m unittest test_utils.py
+```
+
 ## my_utils.py
 **Contains the function get_column, which can returns corresponding values from a queried column and value of interest.**
 ## print_fires.py

@@ -1,0 +1,12 @@
+name: swe4s
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - pycodestyle
+  - wget
+  - ca-certificates
+  - openssl
+  - cython
+prefix: /Users/tyleramos/mambaforge/envs/swe4s

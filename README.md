@@ -27,14 +27,8 @@ python3 print_fires.py --file_name=Agrofood_co2_emission.csv \
                        --result_column=3 --operation=stdv
 ```
 ## Testing Instructions
-Run the functional tests from the /test/func folder with:
-```
-bash test_print_fires.sh
-```
-Run the unit tests from /test/unit_test folder with:
-```
-python -m unittest test_utils.py
-```
+Functional and unit tests are run through github via github actions. See .github/workflows/Tests.yml to see setup. 
+As of 10/11/23, all continuous integration tests work when any branch is pushed to github. 
 
 ## my_utils.py
 **Contains the function get_column, which can returns corresponding values from a queried column and value of interest.**

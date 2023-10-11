@@ -1,4 +1,5 @@
 name: swe4s
+
 channels:
   - defaults
   - bioconda
@@ -9,4 +10,4 @@ dependencies:
   - ca-certificates
   - openssl
   - cython
-prefix: /Users/tyleramos/mambaforge/envs/swe4s
+

@@ -70,9 +70,9 @@ def main():
                          "Pick from: mean, median, stdv")
     
     if args.toPlot == True:
-        x_axis = data_labels[args.result_column]
-        title = '{}_{}'.format(args.query_value, data_labels[args.result_column])
-        my_utils.plot_boxplot(result, x_axis, title)
+        y_axis = data_labels[args.result_column]
+        title = args.query_value
+        my_utils.plot_boxplot(result, y_axis, title)
         print(result)
 
     else:

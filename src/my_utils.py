@@ -134,7 +134,7 @@ def stdv(data):
     return variance ** 0.5
 
 
-def plot_boxplot(data, x_axis="x-axis", title='Title'):
+def plot_boxplot(data, y_axis='y_axis', title='Title'):
     if not data:
         raise ValueError("Expected a non-empty list")
         sys.exit(1)
@@ -143,11 +143,12 @@ def plot_boxplot(data, x_axis="x-axis", title='Title'):
     ax.boxplot(data)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    ax.set_xlabel(x_axis)
-    ax.set_ylabel('Freq.')
+    ax.spines['bottom'].set_visible(False)
+    ax.xaxis.set_visible(False)
+    ax.set_ylabel(y_axis)
     ax.set_title(title)
     
-    output_folder = '../output'
+    output_folder = 'output'
     try:
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)

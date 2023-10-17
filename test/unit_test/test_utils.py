@@ -77,7 +77,7 @@ class TestMathLib(unittest.TestCase):
         self.assertFalse(os.path.isdir(self.outDir),
                          "The directory already exists")
         result = my_utils.get_column(self.data_file, 0,
-                                     "Afghanistan",
+                                     "China",
                                      result_column=3)
         my_utils.plot_boxplot(result, "test", 'test')
 
@@ -86,9 +86,11 @@ class TestMathLib(unittest.TestCase):
     def test_plot_boxplot_file_gen(self):
         self.assertFalse(os.path.isdir(self.test_file),
                          'This file already exists')
+
         result = my_utils.get_column(self.data_file, 0,
-                                     "Australia",
+                                     "China",
                                      result_column=3)
+
         my_utils.plot_boxplot(result, "test", "test")
 
         self.assertTrue(os.path.exists(self.test_file),
@@ -96,7 +98,7 @@ class TestMathLib(unittest.TestCase):
 
     def test_get_data_columns(self):
         columns = my_utils.get_data_columns(self.data_file)
-        expected = ['Area', 'Year', 'Savanna fires', 'Forest fires',
+        expected = ['\ufeffArea', 'Year', 'Savanna fires', 'Forest fires',
                     'Crop Residues', 'Rice Cultivation',
                     'Drained organic soils (CO2)', 'Pesticides Manufacturing',
                     'Food Transport', 'Forestland',
@@ -110,7 +112,7 @@ class TestMathLib(unittest.TestCase):
                     'On-farm energy use', 'Rural population',
                     'Urban population',
                     'Total Population - Male', 'Total Population - Female',
-                    'total_emission', 'Average Temperature °C']
+                    'total_emission', 'Average Temperature ¬∞C']
         self.assertEqual(expected, columns)
 
     def tearDown(self):

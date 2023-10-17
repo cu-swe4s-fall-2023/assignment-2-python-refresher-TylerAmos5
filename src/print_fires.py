@@ -37,12 +37,18 @@ def get_args():
                         help='Choose to perform the mean, median, '
                         'or standard deviation (stdv) on the result column',
                         required=False)
+
+    parser.add_argument('--toPlot',
+                        type=bool,
+                        help='Set to True to generate a boxplot',
+                        required=False)
     args = parser.parse_args()
     return args
 
 
 def main():
     args = get_args()
+    data_labels = my_utils.get_data_columns(args.file_name)
     result = []
     result = my_utils.get_column(args.file_name, args.query_column,
                                  args.query_value,
@@ -57,13 +63,20 @@ def main():
     elif args.operation == 'stdv':
         calc = my_utils.stdv(result)
         print(calc)
-    elif not args.operation:
-        print(result)
-        return
+    elif args.operation is None:
+        pass
     else:
         raise ValueError("This operation is not supported.\n"
                          "Pick from: mean, median, stdv")
-        sys.exit(1)
+
+    if args.toPlot:
+        y_axis = data_labels[args.result_column]
+        title = args.query_value
+        my_utils.plot_boxplot(result, y_axis, title)
+        print(result)
+
+    else:
+        print(result)
 
 
 if __name__ == '__main__':

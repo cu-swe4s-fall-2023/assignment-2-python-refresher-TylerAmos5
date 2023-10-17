@@ -83,3 +83,15 @@ run test_get_column_missing_arg python ../../src/print_fires.py --file_name=./da
                        --result_column=3 --operation=subtract
 assert_in_stderr print_fires
 
+run test_plot_boxplot python ../../src/print_fires.py --file_name=./data/functional_test_data.csv \
+                       --query_column=0 --query_value="China" \
+                       --result_column=3 \
+                       --toPlot=True
+assert_exit_code 0
+
+run test_plot_boxplot_with_op python ../../src/print_fires.py --file_name=./data/functional_test_data.csv \
+                       --query_column=0 --query_value="China" \
+                       --result_column=3 \
+                       --operation=mean \
+                       --toPlot=True
+assert_exit_code 0

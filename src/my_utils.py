@@ -1,4 +1,10 @@
 import sys
+import os
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 
 
 def get_column(file_name, query_column, query_value, result_column=1):
@@ -44,6 +50,12 @@ def get_column(file_name, query_column, query_value, result_column=1):
     except Exception as e:
         print("An error occured")
         sys.exit(1)
+
+def get_data_columns(file_name):
+    with open(file_name, 'r') as f:
+        columns = f.readline()
+        columns = columns.rstrip().split(',')
+        return columns
 
 
 def mean(data):
@@ -120,3 +132,24 @@ def stdv(data):
     squared_d = sum((x - avg) ** 2 for x in data)
     variance = squared_d / (num_elem - 1)
     return variance ** 0.5
+
+
+def plot_histogram(data, x_axis, title):
+
+    fig, ax = plt.subplots()
+    ax.hist(data)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.set_xlabel(x_axis)
+    ax.set_ylabel('Freq.')
+    ax.set_title(title)
+    
+    output_folder = 'output'
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    
+    file_name = '{}.png'.format(title)
+    file_path = os.path.join(output_folder, file_name)
+
+    plt.savefig(file_path, bbox_inches='tight')
+    return

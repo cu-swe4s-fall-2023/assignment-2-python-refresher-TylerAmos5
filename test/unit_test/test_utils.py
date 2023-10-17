@@ -15,7 +15,7 @@ class TestMathLib(unittest.TestCase):
                                       '..',
                                       'func',
                                       'data',
-                                      'Agrofood_co2_emission.csv')
+                                      'functional_test_data.csv')
         self.outDir = os.path.join(os.path.dirname(__file__),
                                    'output')
         self.test_file = os.path.join(os.path.dirname(__file__),

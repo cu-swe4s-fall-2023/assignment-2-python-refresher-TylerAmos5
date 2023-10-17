@@ -2,9 +2,8 @@ import sys
 import os
 import numpy as np
 import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-
+matplotlib.use('Agg')
 
 
 def get_column(file_name, query_column, query_value, result_column=1):
@@ -50,6 +49,7 @@ def get_column(file_name, query_column, query_value, result_column=1):
     except Exception as e:
         print("An error occured")
         sys.exit(1)
+
 
 def get_data_columns(file_name):
     with open(file_name, 'r') as f:
@@ -147,14 +147,14 @@ def plot_boxplot(data, y_axis='y_axis', title='Title'):
     ax.xaxis.set_visible(False)
     ax.set_ylabel(y_axis)
     ax.set_title(title)
-    
+
     output_folder = 'output'
     try:
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
     except OSError:
         print("Error creating directory")
-    
+
     file_name = '{}.png'.format(title)
     file_path = os.path.join(output_folder, file_name)
     try:

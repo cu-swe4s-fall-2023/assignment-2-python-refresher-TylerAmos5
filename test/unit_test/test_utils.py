@@ -12,15 +12,13 @@ import statistics
 class TestMathLib(unittest.TestCase):
     def setUp(self):
         self.data_file = os.path.join(os.path.dirname(__file__),
-                                     '..',
-                                     'func',
-                                     'data',
-                                     'Agrofood_co2_emission.csv')
+                                      '..',
+                                      'func',
+                                      'data',
+                                      'Agrofood_co2_emission.csv')
         self.outDir = os.path.join(os.path.dirname(__file__),
-                                   '..',
                                    'output')
         self.test_file = os.path.join(os.path.dirname(__file__),
-                                      '..',
                                       'output',
                                       'test.png')
 
@@ -79,9 +77,9 @@ class TestMathLib(unittest.TestCase):
         self.assertFalse(os.path.isdir(self.outDir),
                          "The directory already exists")
         result = my_utils.get_column(self.data_file, 0,
-                                 "Afghanistan",
-                                 result_column=3)
-        my_utils.plot_boxplot(result, "test",'test')
+                                     "Afghanistan",
+                                     result_column=3)
+        my_utils.plot_boxplot(result, "test", 'test')
 
         self.assertTrue(os.path.isdir(self.outDir))
 
@@ -91,28 +89,30 @@ class TestMathLib(unittest.TestCase):
         result = my_utils.get_column(self.data_file, 0,
                                      "Afghanistan",
                                      result_column=3)
-        my_utils.plot_boxplot(result, "test","test")
+        my_utils.plot_boxplot(result, "test", "test")
 
         self.assertTrue(os.path.exists(self.test_file),
                         "The file was not created")
+
     def test_get_data_columns(self):
         columns = my_utils.get_data_columns(self.data_file)
-        expected = ['Area', 'Year', 'Savanna fires', 'Forest fires', 
-                    'Crop Residues', 'Rice Cultivation', 
-                    'Drained organic soils (CO2)', 'Pesticides Manufacturing', 
-                    'Food Transport', 'Forestland', 
-                    'Net Forest conversion', 'Food Household Consumption', 
-                    'Food Retail', 'On-farm Electricity Use', 'Food Packaging', 
-                    'Agrifood Systems Waste Disposal', 'Food Processing', 
-                    'Fertilizers Manufacturing', 'IPPU', 'Manure applied to Soils', 
-                    'Manure left on Pasture', 'Manure Management', 
-                    'Fires in organic soils', 'Fires in humid tropical forests',
-                    'On-farm energy use', 'Rural population', 'Urban population',
+        expected = ['Area', 'Year', 'Savanna fires', 'Forest fires',
+                    'Crop Residues', 'Rice Cultivation',
+                    'Drained organic soils (CO2)', 'Pesticides Manufacturing',
+                    'Food Transport', 'Forestland',
+                    'Net Forest conversion', 'Food Household Consumption',
+                    'Food Retail', 'On-farm Electricity Use', 'Food Packaging',
+                    'Agrifood Systems Waste Disposal', 'Food Processing',
+                    'Fertilizers Manufacturing', 'IPPU',
+                    'Manure applied to Soils', 'Manure left on Pasture',
+                    'Manure Management', 'Fires in organic soils',
+                    'Fires in humid tropical forests',
+                    'On-farm energy use', 'Rural population',
+                    'Urban population',
                     'Total Population - Male', 'Total Population - Female',
                     'total_emission', 'Average Temperature °C']
         self.assertEqual(expected, columns)
 
-                                     
     def tearDown(self):
         if os.path.isdir(self.outDir):
             try:
@@ -120,6 +120,8 @@ class TestMathLib(unittest.TestCase):
                 os.rmdir((self.outDir))
             except OSError:
                 pass
+
+
 def main():
     unittest.main()
 

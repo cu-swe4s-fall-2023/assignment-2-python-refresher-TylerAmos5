@@ -1,5 +1,4 @@
 name: swe4s
-
 channels:
   - defaults
   - bioconda
@@ -10,4 +9,8 @@ dependencies:
   - ca-certificates
   - openssl
   - cython
-
+  - matplotlib
+  - snakemake
+  - graphviz
+  - certifi
+prefix: /Users/tyleramos/mambaforge/envs/swe4s

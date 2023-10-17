@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/oQi7O4AA)
-# Python-Refresher with Best Practices
+# A Report on Global Forest Fires
 ## How to Install
 Download the repository from Github using ssh
 ```
@@ -9,6 +9,24 @@ Navigate to the src folder
 ```
 cd <path>/assignment-2-python-refresher-TylerAmos5/src
 ```
+# Create a Report
+## 1) Write a Query List
+Create a new txt file with your desired query values.
+Each value should have its own line.
+e.g. queries.txt
+```
+Japan
+Canada
+Brazil
+```
+
+## 2) Run Plot Generation
+From the root of the repository, use the Snakefile to create an output folder that contains boxplots of the requested data
+```
+snakemake -c 1
+```
+
+# Running Scripts Individually
 ## How to run print_fires.py
 Modify run.sh to set the parameters to query the csv appropriate for your interest
 The --operation parameter is optional. Specify the statistic you would like to calculate.
@@ -61,3 +79,39 @@ Added statistical calculations to my_utils.
 Mean, median, and standard deviation can be calculated for the result column
 Added unit and functional tests
 print_fires now takes an optional operation parameter that can calculate statistics about the result column. 
+
+## HW5 (10/11):
+implemented continuous integration with Tests.yml.
+
+## HW5 (10/17)
+# A Comparison of Countries' Forest Fires
+## Question
+Are there more forest fires in developed countries or undeveloped countries? 
+
+## Approach
+Compare volume of forest fires between two developed countries: 
+- United States
+- Canada
+
+Against forest fires in two underdeveloped countries:
+- Rwanda
+- Somalia
+
+## Results
+### Developed Countries
+![Canada Fires](/output/Canada.png)
+![US Fires](/output/United%20States%20of%20America.png)
+### Underdeveloped Countries
+![Rwanada Fires](/output/Rwanda.png)
+![Somalia Fires](/output/Somalia.png)
+### Interpretation
+This data suggests that there are more forest fires in developed countries compared to underdeveloped countries. 
+However, there are many limitations to this study, such as a lack of consideration of climate and country size.
+
+## Methods
+1) Read in data
+2) Pull amount of forest fires reported for the queried country
+3) Generate a boxplot showing the mean and spread of the forest fires that have occured annually in the queried country from 1990-2020
+4) Compare statistics between developed and underdeveloped countries. 
+
+

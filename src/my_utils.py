@@ -134,22 +134,30 @@ def stdv(data):
     return variance ** 0.5
 
 
-def plot_histogram(data, x_axis, title):
+def plot_boxplot(data, x_axis="x-axis", title='Title'):
+    if not data:
+        raise ValueError("Expected a non-empty list")
+        sys.exit(1)
 
     fig, ax = plt.subplots()
-    ax.hist(data)
+    ax.boxplot(data)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.set_xlabel(x_axis)
     ax.set_ylabel('Freq.')
     ax.set_title(title)
     
-    output_folder = 'output'
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
+    output_folder = '../output'
+    try:
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
+    except OSError:
+        print("Error creating directory")
     
     file_name = '{}.png'.format(title)
     file_path = os.path.join(output_folder, file_name)
-
-    plt.savefig(file_path, bbox_inches='tight')
-    return
+    try:
+        plt.savefig(file_path, bbox_inches='tight')
+    except OSError:
+        print("Error saving file")
+        return

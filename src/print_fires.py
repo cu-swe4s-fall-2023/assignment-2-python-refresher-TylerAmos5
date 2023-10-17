@@ -40,7 +40,7 @@ def get_args():
     
     parser.add_argument('--toPlot',
                         type = bool,
-                        help='Set to True to generate a histogram',
+                        help='Set to True to generate a boxplot',
                         required=False)
     args = parser.parse_args()
     return args
@@ -53,7 +53,7 @@ def main():
     result = my_utils.get_column(args.file_name, args.query_column,
                                  args.query_value,
                                  result_column=args.result_column)
-    calc = None
+    
     if args.operation == 'mean':
         calc = my_utils.mean(result)
         print(calc)
@@ -63,22 +63,16 @@ def main():
     elif args.operation == 'stdv':
         calc = my_utils.stdv(result)
         print(calc)
-    elif not args.operation:
+    elif args.operation is None:
         pass
     else:
         raise ValueError("This operation is not supported.\n"
                          "Pick from: mean, median, stdv")
-        sys.exit(1)
     
     if args.toPlot == True:
         x_axis = data_labels[args.result_column]
         title = '{}_{}'.format(args.query_value, data_labels[args.result_column])
-        if calc is not None:
-            data = calc
-        else:
-            data = result
-
-        my_utils.plot_histogram(data, x_axis, title)
+        my_utils.plot_boxplot(result, x_axis, title)
         print(result)
 
     else:

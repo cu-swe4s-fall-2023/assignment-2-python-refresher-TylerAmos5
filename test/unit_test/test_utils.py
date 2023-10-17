@@ -87,7 +87,7 @@ class TestMathLib(unittest.TestCase):
         self.assertFalse(os.path.isdir(self.test_file),
                          'This file already exists')
         result = my_utils.get_column(self.data_file, 0,
-                                     "Afghanistan",
+                                     "Australia",
                                      result_column=3)
         my_utils.plot_boxplot(result, "test", "test")
 

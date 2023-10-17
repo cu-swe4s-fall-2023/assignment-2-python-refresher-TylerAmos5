@@ -106,7 +106,7 @@ Against forest fires in two underdeveloped countries:
 ![Somalia Fires](/output/Somalia.png)
 ### Interpretation
 This data suggests that there are more forest fires in developed countries compared to underdeveloped countries. 
-However, there are many limitations to this study, such as a lack of consideration of climate and country size.
+However, there are many limitations to this study, such as a lack of consideration of climate and population/country size.
 
 ## Methods
 1) Read in data
